@@ -9,14 +9,13 @@ A simple bakery management web application built with Flask.
 
 ## Project Structure
 ```
+
 backery/
-  backery/
-    app.py            # Main Flask application
-    requirements.txt  # Python dependencies
-    static/
-      index.html      # Main HTML page
-      style.css       # Stylesheet
-  venv/               # Python virtual environment (not tracked by git)
+  app.py            # Main Flask application
+  requirements.txt  # Python dependencies
+  static/
+    index.html      # Main HTML page
+    style.css       # Stylesheet
 ```
 
 ## Setup Instructions
@@ -35,11 +34,11 @@ backery/
    ```
 3. **Install dependencies:**
    ```bash
-   pip install -r backery/requirements.txt
+   pip install -r requirements.txt
    ```
 4. **Run the application:**
    ```bash
-   python backery/app.py
+   python app.py
    ```
 
 ## Notes
