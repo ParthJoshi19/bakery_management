@@ -97,6 +97,7 @@
     .order-btn:hover{
         background-color: antiquewhite;
         color:rgb(179, 84, 55);
+        cursor: pointer;
     }
 
   
