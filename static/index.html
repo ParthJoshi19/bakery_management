@@ -1,269 +1,61 @@
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bakery Management System</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bakery Shop</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Bakery Items</h1>
-        <div id="login-section"></div>
-        <div id="register-section"></div>
-        <div id="admin-section"></div>
-        <div id="items-list" class="items-list"></div>
-        <div id="order-section"></div>
-        <div id="orders-list"></div>
+  <header>
+    <div class="logo">🍰 Baba Bakery</div>
+    <div class="nav-buttons">
+      <button class="login-btn">Login</button>
+      <button class="register-btn">Register</button>
+      <div class="profile-icon">👤</div>
     </div>
-    <script>
-        let currentUser = null;
-        let currentRole = null;
+  </header>
 
-        function showLoginForm() {
-            document.getElementById('login-section').innerHTML = `
-                <form id="login-form">
-                    <input type="text" id="username" placeholder="Username" required />
-                    <input type="password" id="password" placeholder="Password" required />
-                    <button type="submit">Login</button>
-                </form>
-                <button id="show-register">Register</button>
-                <div id="login-error" style="color:red;"></div>
-            `;
-            document.getElementById('login-form').onsubmit = async function(e) {
-                e.preventDefault();
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
-                const res = await fetch('/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
-                });
-                if (res.ok) {
-                    loadUser();
-                } else {
-                    const data = await res.json();
-                    document.getElementById('login-error').textContent = data.error || 'Login failed';
-                }
-            };
-            document.getElementById('show-register').onclick = showRegisterForm;
-            document.getElementById('register-section').innerHTML = '';
-        }
+  <main>
+    <div class="items-container">
+      
+      <div class="item-card">
+        <img src="https://png.pngtree.com/thumb_back/fh260/background/20250702/pngtree-tasty-chocolate-cake-design-for-bakery-or-dessert-menu-image_17454260.webp" alt="Cake">
+        <div class="item-name">Chocolate Cake</div>
+        <div class="item-price">₹500</div>
+        <div class="item-stock">Stock: 10</div>
+        <button class="order-btn">Order</button>
+      </div>
+      
+      <div class="item-card">
+        <img src="https://www.shutterstock.com/image-photo/advertising-podium-photo-delicious-cupcake-600nw-2505195981.jpg" alt="Cupcake">
+        <div class="item-name">Vanilla Cupcake</div>
+        <div class="item-price">₹80</div>
+        <div class="item-stock">Stock: 25</div>
+        <button class="order-btn">Order</button>
+      </div>
+      
+      <div class="item-card">
+        <img src="https://www.shutterstock.com/image-photo/homemade-peanut-almond-butter-cookies-600nw-2639103459.jpg" alt="Cookies">
+        <div class="item-name">Butter Cookies</div>
+        <div class="item-price">₹150</div>
+        <div class="item-stock">Stock: 30</div>
+        <button class="order-btn">Order</button>
+      </div>
+      
+      <div class="item-card">
+        <img src="https://media.istockphoto.com/id/1399922449/photo/bright-pink-donuts-sweet-delicious-baked-dessert.jpg?s=612x612&w=0&k=20&c=xdZ4p7fYFkMdu6Jk0MC4bweSaKTzHhszl1DQ0m3kfqk=" alt="Donut">
+        <div class="item-name">Strawberry Donut</div>
+        <div class="item-price">₹60</div>
+        <div class="item-stock">Stock: 20</div>
+        <button class="order-btn">Order</button>
+      </div>
+    </div>
 
-        function showRegisterForm() {
-            document.getElementById('register-section').innerHTML = `
-                <form id="register-form">
-                    <input type="text" id="reg-username" placeholder="Username" required />
-                    <input type="password" id="reg-password" placeholder="Password" required />
-                    <select id="reg-role">
-                        <option value="staff">Staff</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                    <button type="submit">Register</button>
-                </form>
-                <button id="back-to-login">Back to Login</button>
-                <div id="register-error" style="color:red;"></div>
-            `;
-            document.getElementById('register-form').onsubmit = async function(e) {
-                e.preventDefault();
-                const username = document.getElementById('reg-username').value;
-                const password = document.getElementById('reg-password').value;
-                const role = document.getElementById('reg-role').value;
-                const res = await fetch('/register', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password, role })
-                });
-                if (res.ok) {
-                    document.getElementById('register-error').textContent = 'Registration successful! Please log in.';
-                } else {
-                    const data = await res.json();
-                    document.getElementById('register-error').textContent = data.error || 'Registration failed';
-                }
-            };
-            document.getElementById('back-to-login').onclick = function() {
-                document.getElementById('register-section').innerHTML = '';
-                showLoginForm();
-            };
-            document.getElementById('login-section').innerHTML = '';
-        }
+    <script src="script.js"></script>
+  </main>
 
-        function showLogout(user, role) {
-            document.getElementById('login-section').innerHTML = `
-                <div>Welcome, <b>${user}</b> (${role})! <button id="logout-btn">Logout</button></div>
-            `;
-            document.getElementById('logout-btn').onclick = async function() {
-                await fetch('/logout', { method: 'POST' });
-                loadUser();
-            };
-            document.getElementById('register-section').innerHTML = '';
-        }
-
-        function showAdminSection() {
-            document.getElementById('admin-section').innerHTML = `
-                <h3>Admin: Manage Items</h3>
-                <form id="add-item-form">
-                    <input type="text" id="item-name" placeholder="Name" required />
-                    <input type="number" id="item-price" placeholder="Price" step="0.01" required />
-                    <input type="number" id="item-stock" placeholder="Stock" required />
-                    <button type="submit">Add Item</button>
-                </form>
-                <div id="admin-error" style="color:red;"></div>
-            `;
-            document.getElementById('add-item-form').onsubmit = async function(e) {
-                e.preventDefault();
-                const name = document.getElementById('item-name').value;
-                const price = parseFloat(document.getElementById('item-price').value);
-                const stock = parseInt(document.getElementById('item-stock').value);
-                const res = await fetch('/api/items', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, price, stock })
-                });
-                if (res.ok) {
-                    loadItems();
-                } else {
-                    const data = await res.json();
-                    document.getElementById('admin-error').textContent = data.error || 'Add failed';
-                }
-            };
-        }
-
-        function loadItems() {
-            fetch('/api/items')
-                .then(response => response.json())
-                .then(data => {
-                    const list = document.getElementById('items-list');
-                    list.innerHTML = '';
-                    const ul = document.createElement('ul');
-                    ul.className = 'bakery-list';
-                    data.forEach(item => {
-                        const li = document.createElement('li');
-                        li.className = 'item';
-                        li.innerHTML = `<div class='item-header'><h2>${item.name}</h2></div>
-                            <div class='item-details'><span>Price: ₹${item.price}</span> | <span>Stock: ${item.stock}</span></div>`;
-                        if (currentRole === 'admin') {
-                            li.innerHTML += `
-                                <div class='item-actions'>
-                                    <button onclick=\"editItem(${item.id}, '${item.name}', ${item.price}, ${item.stock})\">Edit</button>
-                                    <button onclick=\"deleteItem(${item.id})\">Delete</button>
-                                </div>
-                            `;
-                        }
-                        if (currentRole) {
-                            li.innerHTML += `
-                                <form class='order-form' onsubmit=\"placeOrder(event, ${item.id})\">
-                                    <input type='number' min='1' max='${item.stock}' value='1' id='order-qty-${item.id}' required />
-                                    <button type='submit'>Order</button>
-                                </form>
-                            `;
-                        }
-                        ul.appendChild(li);
-                    });
-                    list.appendChild(ul);
-                });
-        }
-
-        window.editItem = function(id, name, price, stock) {
-            const list = document.getElementById('items-list');
-            const div = Array.from(list.children).find(d => d.querySelector('h2').textContent === name);
-            if (div) {
-                div.innerHTML = `
-                    <form onsubmit="updateItem(event, ${id})">
-                        <input type="text" id="edit-name-${id}" value="${name}" required />
-                        <input type="number" id="edit-price-${id}" value="${price}" step="0.01" required />
-                        <input type="number" id="edit-stock-${id}" value="${stock}" required />
-                        <button type="submit">Save</button>
-                    </form>
-                `;
-            }
-        }
-
-        window.updateItem = async function(e, id) {
-            e.preventDefault();
-            const name = document.getElementById(`edit-name-${id}`).value;
-            const price = parseFloat(document.getElementById(`edit-price-${id}`).value);
-            const stock = parseInt(document.getElementById(`edit-stock-${id}`).value);
-            const res = await fetch(`/api/items/${id}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, price, stock })
-            });
-            if (res.ok) {
-                loadItems();
-            }
-        }
-
-        window.deleteItem = async function(id) {
-            const res = await fetch(`/api/items/${id}`, { method: 'DELETE' });
-            if (res.ok) {
-                loadItems();
-            }
-        }
-
-        window.placeOrder = async function(e, itemId) {
-            e.preventDefault();
-            const qty = parseInt(document.getElementById(`order-qty-${itemId}`).value);
-            const res = await fetch('/api/orders', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ item_id: itemId, quantity: qty })
-            });
-            if (res.ok) {
-                loadItems();
-                loadOrders();
-            } else {
-                alert('Order failed: ' + (await res.json()).error);
-            }
-        }
-
-        function loadOrders() {
-            fetch('/api/orders')
-                .then(res => res.json())
-                .then(data => {
-                    const list = document.getElementById('orders-list');
-                    list.innerHTML = '<h3>Your Orders</h3>';
-                    if (data.length === 0) {
-                        list.innerHTML += '<p>No orders yet.</p>';
-                    } else {
-                        data.forEach(order => {
-                            list.innerHTML += `<div>Item: ${order.item_name}, Qty: ${order.quantity}, Total: ₹${order.total}, Time: ${order.timestamp}</div>`;
-                        });
-                    }
-                });
-        }
-
-        function clearItems() {
-            document.getElementById('items-list').innerHTML = '';
-            document.getElementById('admin-section').innerHTML = '';
-            document.getElementById('orders-list').innerHTML = '';
-        }
-
-        function loadUser() {
-            fetch('/api/user')
-                .then(res => res.json())
-                .then(data => {
-                    if (data.logged_in) {
-                        currentUser = data.user;
-                        currentRole = data.role;
-                        showLogout(data.user, data.role);
-                        if (data.role === 'admin') {
-                            showAdminSection();
-                        } else {
-                            document.getElementById('admin-section').innerHTML = '';
-                        }
-                        loadItems();
-                        loadOrders();
-                    } else {
-                        currentUser = null;
-                        currentRole = null;
-                        showLoginForm();
-                        clearItems();
-                    }
-                });
-        }
-
-        loadUser();
-    </script>
 </body>
-</html> 
+</html>

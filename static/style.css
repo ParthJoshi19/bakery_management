@@ -1,222 +1,103 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f8f6f2;
-    margin: 0;
-    padding: 0;
-}
-.container {
-    max-width: 700px;
-    margin: 40px auto;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    padding: 32px 24px;
-}
-h1 {
-    text-align: center;
-    color: #a0522d;
-    margin-bottom: 32px;
-}
-.items-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: center;
-}
-.bakery-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.bakery-list .item {
-    background: #fff8ee;
-    border: 1px solid #f3e2c7;
-    border-radius: 8px;
-    padding: 20px 24px;
-    margin-bottom: 18px;
-    box-shadow: 0 1px 4px rgba(160,82,45,0.07);
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-.item-header h2 {
-    margin: 0 0 8px 0;
-    color: #a0522d;
-    font-size: 1.3rem;
-}
-.item-details {
-    color: #5c4033;
-    font-size: 1.05rem;
-    margin-bottom: 6px;
-}
-.item-actions {
-    margin-top: 6px;
-    display: flex;
-    gap: 8px;
-}
-.order-form {
-    margin-top: 8px;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-.order-form input[type='number'] {
-    width: 60px;
-    padding: 6px 8px;
-    border-radius: 5px;
-    border: 1px solid #e0c9a6;
-    font-size: 1rem;
-}
-.order-form button {
-    background: #a0522d;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 7px 16px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-.order-form button:hover {
-    background: #7a3a13;
-}
-/* Login/Register Form Styles */
-#login-section, #register-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 24px;
-}
-#login-section form, #register-section form {
-    background: #fff8ee;
-    border: 1px solid #f3e2c7;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(160,82,45,0.08);
-    padding: 28px 32px 18px 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    min-width: 280px;
-    margin-bottom: 8px;
-}
-#login-section input, #register-section input, #register-section select {
-    padding: 10px 12px;
-    border: 1px solid #e0c9a6;
-    border-radius: 6px;
-    font-size: 1rem;
-    outline: none;
-    transition: border 0.2s;
-}
-#login-section input:focus, #register-section input:focus, #register-section select:focus {
-    border: 1.5px solid #a0522d;
-}
-#login-section button, #register-section button {
-    background: #a0522d;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 0;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-#login-section button:hover, #register-section button:hover {
-    background: #7a3a13;
-}
-#login-error, #register-error {
-    color: #d32f2f !important;
-    font-size: 0.98rem;
-    margin-top: 2px;
-    min-height: 20px;
-    text-align: center;
-}
-#show-register {
-    background: #fff;
-    color: #a0522d;
-    border: 1px solid #a0522d;
-    margin-top: 8px;
-    padding: 8px 0;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-}
-#show-register:hover {
-    background: #a0522d;
-    color: #fff;
-}
-/* Admin Dashboard Styles */
-#admin-section {
-    background: #fff8ee;
-    border: 1px solid #f3e2c7;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(160,82,45,0.08);
-    padding: 24px 28px 18px 28px;
-    margin-bottom: 28px;
-    margin-top: 18px;
-    max-width: 420px;
-    margin-left: auto;
-    margin-right: auto;
-}
-#admin-section h3 {
-    color: #a0522d;
-    margin-top: 0;
-    margin-bottom: 18px;
-    text-align: center;
-}
-#admin-section form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 8px;
-}
-#admin-section input {
-    padding: 9px 12px;
-    border: 1px solid #e0c9a6;
-    border-radius: 6px;
-    font-size: 1rem;
-    outline: none;
-    transition: border 0.2s;
-}
-#admin-section input:focus {
-    border: 1.5px solid #a0522d;
-}
-#admin-section button[type="submit"] {
-    background: #a0522d;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 0;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin-top: 4px;
-}
-#admin-section button[type="submit"]:hover {
-    background: #7a3a13;
-}
-#admin-section #admin-error {
-    color: #d32f2f;
-    font-size: 0.98rem;
-    min-height: 20px;
-    text-align: center;
-}
-.item button {
-    background: #fff;
-    color: #a0522d;
-    border: 1px solid #a0522d;
-    border-radius: 6px;
-    padding: 6px 14px;
-    font-size: 0.98rem;
-    margin: 4px 4px 0 0;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-}
-.item button:hover {
-    background: #a0522d;
-    color: #fff;
-} 
+    body {
+      font-family:'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 0;
+      background: antiquewhite;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: rgb(179, 84, 55);
+      color: white;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-buttons button {
+      font-family:'Courier New', Courier, monospace;
+      font-weight: bold;
+      padding: 0.6rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      background-color: antiquewhite;
+      color: rgb(145, 59, 81);
+    }
+    .nav-buttons button:hover{
+        background-color: rgb(240, 219, 190);
+        font-size: 18px;
+        padding: 0.5rem;
+    }
+    .profile-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: antiquewhite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .items-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+    .item-card {
+      background-color: rgb(236, 212, 168);
+      border-radius: 20px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,1);
+      /* overflow: hidden; */
+      text-align: center;
+      padding: 15px;
+    }
+    .item-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .item-name {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 10px 0 5px;
+    }
+    .item-price {
+      color: #985405;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .item-stock {
+      font-size: 14px;
+      color: rgb(29, 28, 28);
+    }
+    .order-btn{
+        font-family:'Courier New', Courier, monospace;
+        font-weight: bold;
+        font-size: 19px;
+        color: antiquewhite;
+        width: 100%;
+        margin-top: 0.5rem;
+        border-radius: 10px;
+        padding: 0.2rem;
+        border: none;
+        background-color:rgb(179, 84, 55);
+    }
+    .order-btn:hover{
+        background-color: antiquewhite;
+        color:rgb(179, 84, 55);
+        cursor: pointer;
+    }
+
+  
