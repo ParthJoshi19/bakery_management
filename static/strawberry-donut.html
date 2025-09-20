@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strawberry Donut - Baba Bakery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🍰 Baba Bakery</div>
+    <div class="nav-buttons">
+      <button class="login-btn">Login</button>
+      <button class="register-btn">Register</button>
+      <div class="profile-icon">👤</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="product-detail">
+      <button class="back-btn" onclick="window.location.href='index.html'">← Back to Shop</button>
+      
+      <div class="product-container">
+        <div class="product-image">
+          <img src="https://media.istockphoto.com/id/1399922449/photo/bright-pink-donuts-sweet-delicious-baked-dessert.jpg?s=612x612&w=0&k=20&c=xdZ4p7fYFkMdu6Jk0MC4bweSaKTzHhszl1DQ0m3kfqk=" alt="Strawberry Donut">
+        </div>
+        
+        <div class="product-info">
+          <h1 class="product-title">Strawberry Donut</h1>
+          <p class="product-price">₹60</p>
+          <p class="product-stock">Stock Available: 20 pieces</p>
+          
+          <div class="product-description">
+            <h3>Description</h3>
+            <p>Fresh and fluffy donuts with a vibrant strawberry glaze that bursts with fruity flavor. These colorful treats are perfect for breakfast, dessert, or anytime you crave something sweet.</p>
+            
+            <h3>Ingredients</h3>
+            <ul>
+              <li>Fresh strawberry puree</li>
+              <li>Yeast dough</li>
+              <li>Eggs</li>
+              <li>Sugar</li>
+              <li>Flour</li>
+              <li>Milk</li>
+              <li>Strawberry glaze</li>
+            </ul>
+            
+            <h3>Details</h3>
+            <ul>
+              <li>Weight: 80g per donut</li>
+              <li>Serves: 1 person</li>
+              <li>Shelf life: 1 day (best consumed fresh)</li>
+              <li>Storage: Room temperature</li>
+            </ul>
+          </div>
+          
+          <div class="order-section">
+            <div class="quantity-selector">
+              <label for="quantity">Quantity:</label>
+              <input type="number" id="quantity" min="1" max="20" value="1">
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+            <button class="order-now-btn">Order Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Butter Cookies - Baba Bakery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🍰 Baba Bakery</div>
+    <div class="nav-buttons">
+      <button class="login-btn">Login</button>
+      <button class="register-btn">Register</button>
+      <div class="profile-icon">👤</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="product-detail">
+      <button class="back-btn" onclick="window.location.href='index.html'">← Back to Shop</button>
+      
+      <div class="product-container">
+        <div class="product-image">
+          <img src="https://www.shutterstock.com/image-photo/homemade-peanut-almond-butter-cookies-600nw-2639103459.jpg" alt="Butter Cookies">
+        </div>
+        
+        <div class="product-info">
+          <h1 class="product-title">Butter Cookies</h1>
+          <p class="product-price">₹150</p>
+          <p class="product-stock">Stock Available: 30 packets</p>
+          
+          <div class="product-description">
+            <h3>Description</h3>
+            <p>Crispy and buttery cookies made with the finest ingredients. These golden treats melt in your mouth and are perfect with tea or coffee. Each packet contains assorted shapes and flavors.</p>
+            
+            <h3>Ingredients</h3>
+            <ul>
+              <li>Premium butter</li>
+              <li>Fresh eggs</li>
+              <li>Brown sugar</li>
+              <li>All-purpose flour</li>
+              <li>Almonds</li>
+              <li>Peanuts</li>
+              <li>Vanilla essence</li>
+            </ul>
+            
+            <h3>Details</h3>
+            <ul>
+              <li>Weight: 250g per packet</li>
+              <li>Contains: 12-15 pieces</li>
+              <li>Shelf life: 15 days</li>
+              <li>Storage: Store in airtight container</li>
+            </ul>
+          </div>
+          
+          <div class="order-section">
+            <div class="quantity-selector">
+              <label for="quantity">Quantity:</label>
+              <input type="number" id="quantity" min="1" max="30" value="1">
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+            <button class="order-now-btn">Order Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

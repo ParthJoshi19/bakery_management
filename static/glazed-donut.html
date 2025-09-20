@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glazed Donut - Baba Bakery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🍰 Baba Bakery</div>
+    <div class="nav-buttons">
+      <button class="login-btn">Login</button>
+      <button class="register-btn">Register</button>
+      <div class="profile-icon">👤</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="product-detail">
+      <button class="back-btn" onclick="window.location.href='index.html'">← Back to Shop</button>
+      
+      <div class="product-container">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1000&auto=format&fit=crop" alt="Glazed Donut">
+        </div>
+        
+        <div class="product-info">
+          <h1 class="product-title">Glazed Donut</h1>
+          <p class="product-price">₹50</p>
+          <p class="product-stock">Stock Available: 40 pieces</p>
+          
+          <div class="product-description">
+            <h3>Description</h3>
+            <p>Classic glazed donuts with a light, airy texture and sweet vanilla glaze that melts in your mouth. These traditional favorites are perfect for breakfast or as an anytime treat.</p>
+            
+            <h3>Ingredients</h3>
+            <ul>
+              <li>Yeast dough</li>
+              <li>Sugar</li>
+              <li>Fresh eggs</li>
+              <li>Butter</li>
+              <li>Milk</li>
+              <li>Vanilla glaze</li>
+              <li>Powdered sugar</li>
+            </ul>
+            
+            <h3>Details</h3>
+            <ul>
+              <li>Weight: 70g per donut</li>
+              <li>Serves: 1 person</li>
+              <li>Shelf life: 1 day (best consumed fresh)</li>
+              <li>Storage: Room temperature</li>
+            </ul>
+          </div>
+          
+          <div class="order-section">
+            <div class="quantity-selector">
+              <label for="quantity">Quantity:</label>
+              <input type="number" id="quantity" min="1" max="40" value="1">
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+            <button class="order-now-btn">Order Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

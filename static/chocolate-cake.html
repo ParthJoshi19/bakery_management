@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chocolate Cake - Baba Bakery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🍰 Baba Bakery</div>
+    <div class="nav-buttons">
+      <button class="login-btn">Login</button>
+      <button class="register-btn">Register</button>
+      <div class="profile-icon">👤</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="product-detail">
+      <button class="back-btn" onclick="window.location.href='index.html'">← Back to Shop</button>
+      
+      <div class="product-container">
+        <div class="product-image">
+          <img src="https://png.pngtree.com/thumb_back/fh260/background/20250702/pngtree-tasty-chocolate-cake-design-for-bakery-or-dessert-menu-image_17454260.webp" alt="Chocolate Cake">
+        </div>
+        
+        <div class="product-info">
+          <h1 class="product-title">Chocolate Cake</h1>
+          <p class="product-price">₹500</p>
+          <p class="product-stock">Stock Available: 10 pieces</p>
+          
+          <div class="product-description">
+            <h3>Description</h3>
+            <p>Indulge in our rich and moist chocolate cake, made with premium cocoa and layered with smooth chocolate ganache. Perfect for celebrations or treating yourself to something special.</p>
+            
+            <h3>Ingredients</h3>
+            <ul>
+              <li>Premium dark chocolate</li>
+              <li>Fresh eggs</li>
+              <li>Butter</li>
+              <li>Sugar</li>
+              <li>Flour</li>
+              <li>Cocoa powder</li>
+              <li>Vanilla extract</li>
+            </ul>
+            
+            <h3>Details</h3>
+            <ul>
+              <li>Weight: 1 kg</li>
+              <li>Serves: 8-10 people</li>
+              <li>Shelf life: 3 days</li>
+              <li>Storage: Keep refrigerated</li>
+            </ul>
+          </div>
+          
+          <div class="order-section">
+            <div class="quantity-selector">
+              <label for="quantity">Quantity:</label>
+              <input type="number" id="quantity" min="1" max="10" value="1">
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+            <button class="order-now-btn">Order Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
