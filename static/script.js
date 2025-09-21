@@ -126,3 +126,166 @@ function clearCart() {
 function getCartTotal() {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
 }
+
+// User management
+let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+let users = JSON.parse(localStorage.getItem('bakeryUsers')) || [];
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', function() {
+    updateUserInterface();
+    
+    // Add event listeners for forms
+    document.getElementById('loginForm').addEventListener('submit', handleLogin);
+    document.getElementById('registerForm').addEventListener('submit', handleRegister);
+});
+
+// Modal functions
+function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+    clearForms();
+}
+
+function switchModal(fromModal, toModal) {
+    closeModal(fromModal);
+    openModal(toModal);
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+        clearForms();
+    }
+}
+
+// Form handlers
+function handleLogin(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    
+    // Find user
+    const user = users.find(u => u.email === email && u.password === password);
+    
+    if (user) {
+        currentUser = { email: user.email, name: user.name };
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        closeModal('loginModal');
+        updateUserInterface();
+        showMessage('Login successful!', 'success');
+    } else {
+        showMessage('Invalid email or password!', 'error');
+    }
+}
+
+function handleRegister(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('registerName').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+    const confirmPassword = document.getElementById('registerConfirmPassword').value;
+    
+    // Validation
+    if (password !== confirmPassword) {
+        showMessage('Passwords do not match!', 'error');
+        return;
+    }
+    
+    if (users.find(u => u.email === email)) {
+        showMessage('Email already exists!', 'error');
+        return;
+    }
+    
+    // Add new user
+    const newUser = { name, email, password };
+    users.push(newUser);
+    localStorage.setItem('bakeryUsers', JSON.stringify(users));
+    
+    // Auto login
+    currentUser = { email, name };
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    
+    closeModal('registerModal');
+    updateUserInterface();
+    showMessage('Registration successful!', 'success');
+}
+
+// User interface updates
+function updateUserInterface() {
+    const loginBtn = document.querySelector('.login-btn');
+    const registerBtn = document.querySelector('.register-btn');
+    const profileIcon = document.querySelector('.profile-icon');
+    const userGreeting = document.querySelector('.user-greeting');
+    const logoutBtn = document.querySelector('.logout-btn');
+    
+    if (currentUser) {
+        // Hide login/register buttons
+        loginBtn.style.display = 'none';
+        registerBtn.style.display = 'none';
+        
+        // Show user info
+        userGreeting.style.display = 'block';
+        userGreeting.textContent = `Hello, ${currentUser.name}!`;
+        profileIcon.style.display = 'block';
+        logoutBtn.style.display = 'block';
+    } else {
+        // Show login/register buttons
+        loginBtn.style.display = 'block';
+        registerBtn.style.display = 'block';
+        
+        // Hide user info
+        userGreeting.style.display = 'none';
+        profileIcon.style.display = 'none';
+        logoutBtn.style.display = 'none';
+    }
+}
+
+function logout() {
+    currentUser = null;
+    localStorage.removeItem('currentUser');
+    updateUserInterface();
+    showMessage('Logged out successfully!', 'success');
+}
+
+function toggleProfile() {
+    if (currentUser) {
+        alert(`Profile: ${currentUser.name}\nEmail: ${currentUser.email}`);
+    }
+}
+
+// Utility functions
+function clearForms() {
+    document.getElementById('loginForm').reset();
+    document.getElementById('registerForm').reset();
+}
+
+function showMessage(message, type) {
+    // Create message element
+    const messageDiv = document.createElement('div');
+    messageDiv.textContent = message;
+    messageDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        z-index: 2000;
+        ${type === 'success' ? 'background-color: #4CAF50;' : 'background-color: #f44336;'}
+    `;
+    
+    document.body.appendChild(messageDiv);
+    
+    // Remove message after 3 seconds
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 3000);
+}

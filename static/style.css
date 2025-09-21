@@ -1,4 +1,4 @@
-    body {
+body {
       font-family:'Courier New', Courier, monospace;
       margin: 0;
       padding: 0;
@@ -19,7 +19,7 @@
     .nav-buttons {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
     }
     .nav-buttons button {
       font-family:'Courier New', Courier, monospace;
@@ -46,6 +46,11 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      font-size: 24px;
+      padding: 5px;
+    }
+    .profile-icon:hover {
+      background-color: #ddd;
     }
     .items-container {
       display: grid;
@@ -246,6 +251,109 @@
       background-color: rgb(145, 59, 81);
     }
 
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+    }
+
+    .modal h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #ff6b6b;
+      box-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+    }
+
+    .modal form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .modal form button:hover {
+      background-color: #e55555;
+    }
+
+    .form-switch {
+      text-align: center;
+      margin-top: 15px;
+      color: #666;
+    }
+
+    .form-switch span {
+      color: #ff6b6b;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .form-switch span:hover {
+      color: #e55555;
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .product-container {
@@ -267,4 +375,3 @@
       }
     }
 
-  
